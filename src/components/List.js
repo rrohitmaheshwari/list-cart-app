@@ -16,7 +16,6 @@ const useStyles = makeStyles(theme => ({
 function List(props) {
     const classes = useStyles();
     let {sourceList} = props;
-    console.log(sourceList);
     return (
         <div className="List">
             <Paper className={classes.root}>
@@ -25,7 +24,7 @@ function List(props) {
                 </Typography>
                 <Divider/>
                 <Lists component="nav" aria-label="mailbox folders">
-                    {sourceList.map((data, index) =>
+                    {sourceList && sourceList.map((data, index) =>
                         <div key={index}>
                             <ListItem button>
                                 <ListItemText primary={data}/>

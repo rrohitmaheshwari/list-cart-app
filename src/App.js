@@ -7,7 +7,9 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={sourceList : ["Item1","Item2","Item3","Item4"]};
+        this.state={sourceList : ["Item1","Item2","Item3","Item4"],
+                    cartList: []
+        };
     }
 
     render() {
@@ -18,7 +20,7 @@ class App extends React.Component {
                 </div>
                 <div>
                     <List sourceList={this.state.sourceList}/>
-                    <Cart/>
+                    <Cart cartList={this.state.cartList}/>
                 </div>
             </div>
         );
