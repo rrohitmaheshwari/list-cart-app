@@ -1,24 +1,26 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles(theme => ({
+
+const styles = {
     root: {
-        padding: theme.spacing(3, 2),
+        padding: "24px 16px",
     },
-}));
+};
 
-function Cart(props) {
-    const classes = useStyles();
-    let {cartList} = props;
+class Cart extends React.Component {
+    render (){
+    let {cartList} = this.props;
+    let {handleClickCart} = this.props;
     return (
         <div className="List">
-            <Paper className={classes.root}>
+            <Paper className={this.props.classes.root}>
                 <Typography variant="h5" component="h3">
                     Cart
                 </Typography>
@@ -26,7 +28,7 @@ function Cart(props) {
                 <List component="nav" aria-label="mailbox folders">
                     {cartList && cartList.map((data, index) =>
                         <div key={index}>
-                            <ListItem button>
+                            <ListItem button onClick={() => handleClickCart(data)}>
                                 <ListItemText primary={data}/>
                             </ListItem>
                             <Divider light/>
@@ -36,6 +38,7 @@ function Cart(props) {
             </Paper>
         </div>
     );
+    }
 }
 
-export default Cart;
+export default withStyles(styles)(Cart);

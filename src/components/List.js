@@ -7,15 +7,18 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(3, 2),
     },
 }));
 
+
 function List(props) {
     const classes = useStyles();
     let {sourceList} = props;
+    let {handleClickList} = props;
     return (
         <div className="List">
             <Paper className={classes.root}>
@@ -26,7 +29,7 @@ function List(props) {
                 <Lists component="nav" aria-label="mailbox folders">
                     {sourceList && sourceList.map((data, index) =>
                         <div key={index}>
-                            <ListItem button>
+                            <ListItem button onClick={() => handleClickList(data)}>
                                 <ListItemText primary={data}/>
                             </ListItem>
                             <Divider light/>
